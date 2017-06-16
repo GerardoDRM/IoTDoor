@@ -1,0 +1,102 @@
+<link rel="import" href="bower_components/polymer/polymer-element.html">
+<link rel="import" href="bower_components/app-layout/app-layout.html">
+<link rel="import" href="bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="icon-toggle.html">
+
+<dom-module id="iotdoor-app">
+  <template>
+    <style>
+      :host {
+        display: block;
+        --icon-toggle-color: lightgrey;
+        --icon-toggle-outline-color: black;
+        --icon-toggle-pressed-color: red;
+        font-family: sans-serif;
+      }
+      app-header {
+      color: #fff;
+      background-color: #00AA8D;
+    }
+    app-toolbar {
+      height: 120px;
+    }
+    [condensed-title] {
+     position: absolute;
+     top: 0;
+     bottom: 0;
+     left: 0;
+     right: 0;
+     background-image: url('//app-layout-assets.appspot.com/assets/pesto/logo_m.png');
+     background-repeat: no-repeat;
+     background-position: center center;
+     background-size: 90px;
+     /* The difference in font size is used to calculate the scale of the title in the transition. */
+     font-size: 16px;
+   }
+   [main-title] {
+     position: absolute;
+     top: -120px;
+     bottom: 0;
+     left: 0;
+     right: 0;
+     background-image: url('//app-layout-assets.appspot.com/assets/pesto/logo_l.png');
+     background-repeat: no-repeat;
+     background-position: center center;
+     background-size: 240px;
+     -webkit-transform-origin: center top !important;
+     transform-origin: center top !important;
+     /* The difference in font size is used to calculate the scale of the title in the transition. */
+     font-size: 32px;
+   }
+
+   .content {
+    display: block;
+    position: relative;
+    max-width: 1000px;
+    margin: 5px auto;
+  }
+
+
+    </style>
+
+    <app-header-layout>
+
+      <app-header condenses fixed shadow slot="header">
+        <app-toolbar class="top-toolbar">
+          <slot name="drawer-toggle"></slot>
+          <div condensed-title></div>
+        </app-toolbar>
+        <app-toolbar class="bottom-toolbar">
+          <div main-title></div>
+        </app-toolbar>
+      </app-header>
+
+      <div class="content">
+          <icon-toggle toggle-icon="menu"></icon-toggle>
+      </div>
+
+  </app-header-layout>
+  </template>
+
+  <script>
+    /**
+     * @customElement
+     * @polymer
+     */
+    class IotdoorApp extends Polymer.Element {
+      static get is() {
+        return 'iotdoor-app';
+      }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'iotdoor-app'
+          }
+        };
+      }
+    }
+
+    window.customElements.define(IotdoorApp.is, IotdoorApp);
+  </script>
+</dom-module>

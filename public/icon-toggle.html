@@ -1,0 +1,82 @@
+<link rel="import" href="bower_components/polymer/polymer-element.html">
+<link rel="import" href="bower_components/polymer/lib/mixins/gesture-event-listeners.html">
+<link rel="import" href="bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="bower_components/polymerfire/firebase-app.html">
+<link rel="import" href="bower_components/polymerfire/firebase-query.html">
+
+<dom-module id="icon-toggle">
+
+  <template>
+
+    <style>
+      /* shadow DOM styles go here */
+      :host {
+        display: inline-block;
+      }
+      iron-icon {
+        fill: rgba(0,0,0,0);
+        stroke: currentcolor;
+      }
+      :host([pressed]) iron-icon {
+        fill: currentcolor;
+      }
+    </style>
+
+    <firebase-app
+      auth-domain="iotkimetrics.firebaseapp.com"
+      database-url="https://iotkimetrics.firebaseio.com/"
+      api-key="AIzaSyDZO459f_52p9zKlUL-gdVNj-WIdozzLvM"
+      storage-bucket="iotkimetrics.appspot.com"
+      messaging-sender-id="732803120029">
+    </firebase-app>
+
+    <firebase-query
+      id="query"
+      path="/test"
+      data="{{data}}"
+    ></firebase-query>
+
+    <!-- shadow DOM goes here -->
+    <iron-icon icon="[[toggleIcon]]"></iron-icon>
+
+  </template>
+
+  <script>
+    class IconToggle extends Polymer.GestureEventListeners(Polymer.Element) {
+      static get is() {
+        return "icon-toggle";
+      }
+      static get properties() {
+        return {
+          data: {
+            type: Object,
+            observer: 'dataChanged'
+          },
+          pressed: {
+            type: Boolean,
+            notify: true,
+            reflectToAttribute: true,
+            value: false
+          },
+          toggleIcon: {
+            type: String
+          },
+        }
+      }
+      dataChanged(newData, oldData) {
+        console.log(newData, oldData);
+      }
+      constructor() {
+        super();
+        Polymer.Gestures.addListener(this, 'tap', () => this.toggle());
+      }
+      toggle() {
+        this.pressed = !this.pressed;
+        this.$.query.ref.push({
+          content: "Hola"
+        });
+      }
+    }
+    customElements.define(IconToggle.is, IconToggle);
+  </script>
+</dom-module>

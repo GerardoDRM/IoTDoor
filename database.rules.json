@@ -1,0 +1,12 @@
+{
+  "rules": {
+    "door": {
+      ".read": true,
+      ".write": true
+    },
+  	"test": {
+      ".read": true,
+       ".write": true
+    }
+  }
+}
