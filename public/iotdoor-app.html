@@ -1,6 +1,8 @@
 <link rel="import" href="bower_components/polymer/polymer-element.html">
 <link rel="import" href="bower_components/app-layout/app-layout.html">
 <link rel="import" href="bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="bower_components/polymerfire/firebase-app.html">
+
 <link rel="import" href="icon-toggle.html">
 
 <dom-module id="iotdoor-app">
@@ -50,6 +52,23 @@
     }
     </style>
 
+    <!-- Import Firebase app -->
+    <firebase-app
+      auth-domain="iotkimetricsfirebaseapp.com"
+      database-url="https://iotkimetrics.firebaseio.com/"
+      api-key="AIzaSyDZO459f_52p9zKlUL-gdVNj-WIdozzLvM"
+      storage-bucket="iotkimetrics.appspot.com"
+      messaging-sender-id="732803120029">
+    </firebase-app>
+
+    <!-- <firebase-app
+      auth-domain="yourdomain.firebaseapp.com"
+      database-url="https://yourdomain.firebaseio.com/"
+      api-key="YOUR_KEY"
+      storage-bucket="yourdomain.appspot.com"
+      messaging-sender-id="YOUR_ID">
+    </firebase-app> -->
+
       <app-header-layout>
 
       <app-header condenses fixed shadow slot="header">
@@ -63,7 +82,12 @@
       </app-header>
 
       <div class="content">
-          <icon-toggle toggle-icon="static/open.svg"></icon-toggle>
+        <!-- use a computed binding to generate the message -->
+          <div><span>[[_message(isActive)]]</span></div>
+        <!-- curly brackets ({{}}} allow two-way binding -->
+          <icon-toggle toggle-icon="static/open.svg" pressed="{{isActive}}" door-selection="test_1"></icon-toggle>
+          <div><span>[[_message(isActiveDoor2)]]</span></div>
+          <icon-toggle toggle-icon="static/open.svg" pressed="{{isActiveDoor2}}" door-selection="test_2"></icon-toggle>
       </div>
 
     </app-header-layout>
@@ -85,6 +109,13 @@
             value: 'iotdoor-app'
           }
         };
+      }
+      _message(isActive) {
+        if (isActive) {
+          return "Is Open!";
+        } else {
+          return "Is Closed";
+        }
       }
     }
 

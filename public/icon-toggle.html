@@ -1,7 +1,6 @@
 <link rel="import" href="bower_components/polymer/polymer-element.html">
 <link rel="import" href="bower_components/polymer/lib/mixins/gesture-event-listeners.html">
 <link rel="import" href="bower_components/iron-icon/iron-icon.html">
-<link rel="import" href="bower_components/polymerfire/firebase-app.html">
 <link rel="import" href="bower_components/polymerfire/firebase-query.html">
 
 <dom-module id="icon-toggle">
@@ -15,27 +14,19 @@
         --iron-icon-height: 100px;
         --iron-icon-width: 100px;
       }
-      iron-icon {
-        fill: rgba(0,0,0,0);
-        stroke: currentcolor;
+      :host iron-icon {
+        fill: var(--icon-toggle-color, rgba(0,0,0,0));
+        stroke: var(--icon-toggle-outline-color, currentcolor);
       }
       :host([pressed]) iron-icon {
-        fill: currentcolor;
+        fill: var(--icon-toggle-pressed-color, currentcolor);
       }
     </style>
-    <!-- Import Firebase app -->
-    <firebase-app
-      auth-domain="yourdomain.firebaseapp.com"
-      database-url="https://yourdomain.firebaseio.com/"
-      api-key="YOUR_KEY"
-      storage-bucket="yourdomain.appspot.com"
-      messaging-sender-id="YOUR_ID">
-    </firebase-app>
 
    <!-- Main path to listen the door path -->
     <firebase-query
          id="query"
-         path="/test"
+         path="/door"
          data="{{data}}"
     ></firebase-query>
 
@@ -65,6 +56,9 @@
           toggleIcon: {
             type: String
           },
+          doorSelection: {
+            type: String
+          }
         }
       }
       // Do something if data has change
@@ -80,9 +74,9 @@
         // in order to open or close the door
         this.pressed = !this.pressed;
         if (this.pressed) {
-          this.$.query.ref.child("test_1").set("open");
+          this.$.query.ref.child(this.doorSelection).set("open");
         } else {
-          this.$.query.ref.child("test_1").set("closed");
+          this.$.query.ref.child(this.doorSelection).set("closed");
         }
       }
     }
