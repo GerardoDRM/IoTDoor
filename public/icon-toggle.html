@@ -12,6 +12,8 @@
       /* shadow DOM styles go here */
       :host {
         display: inline-block;
+        --iron-icon-height: 100px;
+        --iron-icon-width: 100px;
       }
       iron-icon {
         fill: rgba(0,0,0,0);
@@ -21,23 +23,24 @@
         fill: currentcolor;
       }
     </style>
-
+    <!-- Import Firebase app -->
     <firebase-app
-      auth-domain="iotkimetrics.firebaseapp.com"
-      database-url="https://iotkimetrics.firebaseio.com/"
-      api-key="AIzaSyDZO459f_52p9zKlUL-gdVNj-WIdozzLvM"
-      storage-bucket="iotkimetrics.appspot.com"
-      messaging-sender-id="732803120029">
+      auth-domain="yourdomain.firebaseapp.com"
+      database-url="https://yourdomain.firebaseio.com/"
+      api-key="YOUR_KEY"
+      storage-bucket="yourdomain.appspot.com"
+      messaging-sender-id="YOUR_ID">
     </firebase-app>
 
+   <!-- Main path to listen the door path -->
     <firebase-query
-      id="query"
-      path="/test"
-      data="{{data}}"
+         id="query"
+         path="/test"
+         data="{{data}}"
     ></firebase-query>
 
-    <!-- shadow DOM goes here -->
-    <iron-icon icon="[[toggleIcon]]"></iron-icon>
+    <!-- Toggle component -->
+    <iron-icon src="[[toggleIcon]]"></iron-icon>
 
   </template>
 
@@ -46,6 +49,7 @@
       static get is() {
         return "icon-toggle";
       }
+      // Add properties to component
       static get properties() {
         return {
           data: {
@@ -63,6 +67,7 @@
           },
         }
       }
+      // Do something if data has change
       dataChanged(newData, oldData) {
         console.log(newData, oldData);
       }
@@ -71,10 +76,14 @@
         Polymer.Gestures.addListener(this, 'tap', () => this.toggle());
       }
       toggle() {
+        // When button is pressed we should send the command to firebase
+        // in order to open or close the door
         this.pressed = !this.pressed;
-        this.$.query.ref.push({
-          content: "Hola"
-        });
+        if (this.pressed) {
+          this.$.query.ref.child("test_1").set("open");
+        } else {
+          this.$.query.ref.child("test_1").set("closed");
+        }
       }
     }
     customElements.define(IconToggle.is, IconToggle);
