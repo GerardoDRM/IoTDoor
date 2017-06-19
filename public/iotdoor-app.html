@@ -4,6 +4,7 @@
 <link rel="import" href="bower_components/polymerfire/firebase-app.html">
 
 <link rel="import" href="icon-toggle.html">
+<link href="https://fonts.googleapis.com/css?family=Monoton|Open+Sans" rel="stylesheet">
 
 <dom-module id="iotdoor-app">
   <template>
@@ -16,7 +17,7 @@
       }
       app-header {
       color: #fff;
-      background-color: #0D47A1;
+      background-color: #212121;
     }
       app-toolbar {
         height: 120px;
@@ -30,6 +31,8 @@
        margin: 0 auto;
        text-align: center;
        font-size: 2em;
+       font-family: 'Monoton', cursive;
+
      }
      [main-title] {
        position: absolute;
@@ -37,7 +40,7 @@
        bottom: 0;
        left: 0;
        right: 0;
-       background: url("static/door.svg") center/cover no-repeat;
+       background: url("images/door.svg") center/cover no-repeat;
        background-size: 80px;
        -webkit-transform-origin: center top !important;
        transform-origin: center top !important;
@@ -48,11 +51,15 @@
       display: block;
       position: relative;
       max-width: 1000px;
-      margin: 5px auto;
+      margin: 15px auto;
+      text-align: center;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 2em;
     }
     </style>
 
     <!-- Import Firebase app -->
+
     <firebase-app
       auth-domain="yourdomain.firebaseapp.com"
       database-url="https://yourdomain.firebaseio.com/"
@@ -74,12 +81,13 @@
       </app-header>
 
       <div class="content">
+
+        <div><span>[[_message(isActiveDoor2)]]</span></div>
+        <icon-toggle toggle-icon="touch-app" pressed="{{isActiveDoor2}}" door-selection="door_2"></icon-toggle>
         <!-- use a computed binding to generate the message -->
           <div><span>[[_message(isActive)]]</span></div>
         <!-- curly brackets ({{}}} allow two-way binding -->
-          <icon-toggle toggle-icon="static/open.svg" pressed="{{isActive}}" door-selection="test_1"></icon-toggle>
-          <div><span>[[_message(isActiveDoor2)]]</span></div>
-          <icon-toggle toggle-icon="static/open.svg" pressed="{{isActiveDoor2}}" door-selection="test_2"></icon-toggle>
+          <icon-toggle toggle-icon="touch-app" pressed="{{isActive}}" door-selection="door_1"></icon-toggle>
       </div>
 
     </app-header-layout>

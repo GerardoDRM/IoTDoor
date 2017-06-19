@@ -1,64 +1,28 @@
-[debug] [2017-06-16T07:00:16.913Z] ----------------------------------------------------------------------
-[debug] [2017-06-16T07:00:16.915Z] Command:      /usr/bin/nodejs /usr/bin/firebase serve
-[debug] [2017-06-16T07:00:16.916Z] CLI Version:  3.9.1
-[debug] [2017-06-16T07:00:16.916Z] Platform:     linux
-[debug] [2017-06-16T07:00:16.916Z] Node Version: v6.3.1
-[debug] [2017-06-16T07:00:16.916Z] Time:         Fri Jun 16 2017 02:00:16 GMT-0500 (CDT)
-[debug] [2017-06-16T07:00:16.916Z] ----------------------------------------------------------------------
+[debug] [2017-06-19T22:13:09.336Z] ----------------------------------------------------------------------
+[debug] [2017-06-19T22:13:09.339Z] Command:      /usr/bin/nodejs /usr/bin/firebase serve
+[debug] [2017-06-19T22:13:09.339Z] CLI Version:  3.9.1
+[debug] [2017-06-19T22:13:09.339Z] Platform:     linux
+[debug] [2017-06-19T22:13:09.339Z] Node Version: v6.3.1
+[debug] [2017-06-19T22:13:09.339Z] Time:         Mon Jun 19 2017 17:13:09 GMT-0500 (CDT)
+[debug] [2017-06-19T22:13:09.339Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2017-06-16T07:00:16.926Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2017-06-16T07:00:16.926Z] > authorizing via signed-in user
-[debug] [2017-06-16T07:00:16.928Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/iotkimetrics  
- Fri Jun 16 2017 02:00:16 GMT-0500 (CDT)
-[debug] [2017-06-16T07:00:17.728Z] <<< HTTP RESPONSE 200
-[debug] [2017-06-16T07:00:17.731Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/iotkimetrics/tokens  
- Fri Jun 16 2017 02:00:17 GMT-0500 (CDT)
-[debug] [2017-06-16T07:00:18.147Z] <<< HTTP RESPONSE 200
+[debug] [2017-06-19T22:13:09.351Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-06-19T22:13:09.352Z] > authorizing via signed-in user
+[debug] [2017-06-19T22:13:09.354Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/iotkimetrics  
+ Mon Jun 19 2017 17:13:09 GMT-0500 (CDT)
+[debug] [2017-06-19T22:13:10.112Z] <<< HTTP RESPONSE 200
+[debug] [2017-06-19T22:13:10.114Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/iotkimetrics/tokens  
+ Mon Jun 19 2017 17:13:10 GMT-0500 (CDT)
+[debug] [2017-06-19T22:13:10.814Z] <<< HTTP RESPONSE 200
 [info] 
 [info] === Serving from '/home/gerardo/Documents/Learning/IoT/IoTDoor'...
 [info] 
-[debug] [2017-06-16T07:00:18.151Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/iotkimetrics  
- Fri Jun 16 2017 02:00:18 GMT-0500 (CDT)
-[debug] [2017-06-16T07:00:18.600Z] <<< HTTP RESPONSE 200
-[debug] [2017-06-16T07:00:18.601Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/732803120029/clients/_:getWebAppConfig  
- Fri Jun 16 2017 02:00:18 GMT-0500 (CDT)
-[debug] [2017-06-16T07:00:19.184Z] <<< HTTP RESPONSE 200
-[info] i  hosting: Serving hosting files from: public
-[info] ✔  hosting: Local server: http://localhost:5000
-
-[debug] [2017-06-16T15:03:43.609Z] ----------------------------------------------------------------------
-[debug] [2017-06-16T15:03:43.612Z] Command:      /usr/bin/nodejs /usr/bin/firebase serve
-[debug] [2017-06-16T15:03:43.612Z] CLI Version:  3.9.1
-[debug] [2017-06-16T15:03:43.612Z] Platform:     linux
-[debug] [2017-06-16T15:03:43.612Z] Node Version: v6.3.1
-[debug] [2017-06-16T15:03:43.612Z] Time:         Fri Jun 16 2017 10:03:43 GMT-0500 (CDT)
-[debug] [2017-06-16T15:03:43.612Z] ----------------------------------------------------------------------
-[debug] 
-[debug] [2017-06-16T15:03:43.624Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2017-06-16T15:03:43.624Z] > authorizing via signed-in user
-[debug] [2017-06-16T15:03:43.626Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
-[debug] [2017-06-16T15:03:43.626Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token { refresh_token: '1/7CRcZzFzGNn8rgUauhHexO4z_wLc0igcMDEr6iCRqwA',
-  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
-  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
-  grant_type: 'refresh_token',
-  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
- Fri Jun 16 2017 10:03:43 GMT-0500 (CDT)
-[debug] [2017-06-16T15:03:43.845Z] <<< HTTP RESPONSE 200
-[debug] [2017-06-16T15:03:43.995Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/iotkimetrics  
- Fri Jun 16 2017 10:03:43 GMT-0500 (CDT)
-[debug] [2017-06-16T15:03:44.577Z] <<< HTTP RESPONSE 200
-[debug] [2017-06-16T15:03:44.578Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/iotkimetrics/tokens  
- Fri Jun 16 2017 10:03:44 GMT-0500 (CDT)
-[debug] [2017-06-16T15:03:45.353Z] <<< HTTP RESPONSE 200
-[info] 
-[info] === Serving from '/home/gerardo/Documents/Learning/IoT/IoTDoor'...
-[info] 
-[debug] [2017-06-16T15:03:45.355Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/iotkimetrics  
- Fri Jun 16 2017 10:03:45 GMT-0500 (CDT)
-[debug] [2017-06-16T15:03:45.690Z] <<< HTTP RESPONSE 200
-[debug] [2017-06-16T15:03:45.691Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/732803120029/clients/_:getWebAppConfig  
- Fri Jun 16 2017 10:03:45 GMT-0500 (CDT)
-[debug] [2017-06-16T15:03:46.189Z] <<< HTTP RESPONSE 200
+[debug] [2017-06-19T22:13:10.819Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/iotkimetrics  
+ Mon Jun 19 2017 17:13:10 GMT-0500 (CDT)
+[debug] [2017-06-19T22:13:11.246Z] <<< HTTP RESPONSE 200
+[debug] [2017-06-19T22:13:11.247Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/732803120029/clients/_:getWebAppConfig  
+ Mon Jun 19 2017 17:13:11 GMT-0500 (CDT)
+[debug] [2017-06-19T22:13:11.679Z] <<< HTTP RESPONSE 200
 [info] i  hosting: Serving hosting files from: public
 [info] ✔  hosting: Local server: http://localhost:5000
 

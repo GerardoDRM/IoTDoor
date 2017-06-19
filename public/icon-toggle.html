@@ -2,17 +2,31 @@
 <link rel="import" href="bower_components/polymer/lib/mixins/gesture-event-listeners.html">
 <link rel="import" href="bower_components/iron-icon/iron-icon.html">
 <link rel="import" href="bower_components/polymerfire/firebase-query.html">
+<link rel="import" href="bower_components/paper-fab/paper-fab.html">
 
 <dom-module id="icon-toggle">
 
   <template>
 
     <style>
+
       /* shadow DOM styles go here */
       :host {
         display: inline-block;
         --iron-icon-height: 100px;
         --iron-icon-width: 100px;
+        margin: 20px auto;
+      }
+      :host paper-fab {
+        width: 180px;
+        height: 180px;
+        --paper-fab-background: #FFAB00;
+
+        --paper-fab-iron-icon {
+          height: 120px;
+          width: 120px;
+          background: white;
+        }
       }
       :host iron-icon {
         fill: var(--icon-toggle-color, rgba(0,0,0,0));
@@ -31,7 +45,7 @@
     ></firebase-query>
 
     <!-- Toggle component -->
-    <iron-icon src="[[toggleIcon]]"></iron-icon>
+    <paper-fab icon="[[toggleIcon]]"></paper-fab>
 
   </template>
 
@@ -73,11 +87,26 @@
         // When button is pressed we should send the command to firebase
         // in order to open or close the door
         this.pressed = !this.pressed;
-        if (this.pressed) {
-          this.$.query.ref.child(this.doorSelection).set("open");
-        } else {
-          this.$.query.ref.child(this.doorSelection).set("closed");
-        }
+        this.bounce(this, 2);
+        // if (this.pressed) {
+        //   this.$.query.ref.child(this.doorSelection).set("open");
+        // } else {
+        //   this.$.query.ref.child(this.doorSelection).set("closed");
+        // }
+      }
+      bounce(elem, iterations) {
+        var keyframes = [
+          {transform: 'translate3d(0,0,0)', offset: 0},
+          {transform: 'translate3d(0,0,0)', offset: 0.2},
+          {transform: 'translate3d(0,-30px,0)', offset: 0.4},
+          {transform: 'translate3d(0,-30px,0)', offset: 0.43},
+          {transform: 'translate3d(0,0,0)', offset: 0.53},
+          {transform: 'translate3d(0,-15px,0)', offset: 0.7},
+          {transform: 'translate3d(0,0,0)', offset: 0.8},
+          {transform: 'translate3d(0,-15px,0)', offset: 0.9},
+          {transform: 'translate3d(0,0,0)', offset: 1}];
+        var timing = {duration: 900, iterations: iterations, easing: 'cubic-bezier(0.215, 0.610, 0.355, 1.000)'};
+        return elem.animate(keyframes, timing);
       }
     }
     customElements.define(IconToggle.is, IconToggle);
