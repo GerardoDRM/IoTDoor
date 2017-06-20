@@ -88,11 +88,11 @@
         // in order to open or close the door
         this.pressed = !this.pressed;
         this.bounce(this, 2);
-        // if (this.pressed) {
-        //   this.$.query.ref.child(this.doorSelection).set("open");
-        // } else {
-        //   this.$.query.ref.child(this.doorSelection).set("closed");
-        // }
+        if (this.pressed) {
+          this.$.query.ref.child(this.doorSelection).set("open");
+        } else {
+          this.$.query.ref.child(this.doorSelection).set("closed");
+        }
       }
       bounce(elem, iterations) {
         var keyframes = [
